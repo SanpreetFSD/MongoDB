@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 
 const mongoose = require("mongoose");
+
+const port = process.env.PORT;
+
 app.use(express.json());
 app.get("/test", (req, res) => {
   res.json({
@@ -17,24 +20,24 @@ mongoose
 //in order to view this db , we have specify what kind of database it is , and what is the type of data it is going to store
 //Schema of the db model;
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-});
+// const UserSchema = new Schema({
+//   username: {
+//     type: String,
+//     required: true,
+//   },
+//   email: {
+//     type: String,
+//     required: true,
+//   },
+//   password: {
+//     type: String,
+//     required: true,
+//   },
+// });
 
-const UserModel = mongoose.model("UserDatabase", UserSchema);
+// const UserModel = mongoose.model("UserDatabase", UserSchema);
 // this model will be used to intercat with our db using our apis.
 
 app.post("/register", async (req, res) => {
@@ -128,6 +131,12 @@ app.post("/user", async(req, res) => {
 })
 
 
-app.listen(5200, () => {
+app.listen(port, () => {
   console.log("server running");
 });
+
+
+
+
+
+
